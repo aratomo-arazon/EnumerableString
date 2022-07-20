@@ -11,10 +11,14 @@ Field names can be used as values, so there is no need to define values.
 ```cs
 public class Example : EnumerableString<Example>
 {
+#pragma warning disable CS8618
     static Example() { init(); }
+#pragma warning restore CS8618
+#pragma warning disable CS0649
     public static readonly string FOO;
     public static readonly string BAR;
     public static readonly string BAZ;
+#pragma warning restore CS0649
 }
 ```
 
@@ -32,11 +36,6 @@ foreach (var value in new Example())
     Console.WriteLine(value);      // FOO -> BAR -> BAZ
 }
 ```
-
-## Note
-If `<Nullable/>` in the .csproj file is set to true, the following warnings will be issued and you should take action accordingly.
-* CS8618
-* CS0649
 
 ## License
 [MIT](./LICENSE)
